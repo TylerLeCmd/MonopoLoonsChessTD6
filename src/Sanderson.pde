@@ -2,10 +2,7 @@ void setup() {
   size(900, 600);
   background(144, 238, 144);
   textAlign(CENTER);
-}
-
-void draw() {
-  colorMode(RGB, 255);
+    colorMode(RGB, 255);
   fill(144, 238, 144);
   rect(0, 0, 600, 600);
   rect(0, 0, 75, 75);
@@ -51,5 +48,16 @@ void draw() {
   rect(525, 475, 25, 50);
   textSize(80);
   stroke(111, 17, 111);
-  text("Monopo\nLoons\nChess", 300, 220);
+  colorMode(RGB, 255);
+  noStroke();
+  for(int i = 0; i < 4; i++){
+  fill (118,154,82);
+  rect((i*25)+75,75,50,50);
+  //fill (228,234,193);
+  //rect(((i+1)*25)+125,75,50,50);
+  }
+}
+
+void draw() {
+
 }
