@@ -1,6 +1,7 @@
 void setup() {
   size(900, 600);
   background(144, 238, 144);
+  textAlign(CENTER);
 }
 
 void draw() {
@@ -48,4 +49,7 @@ void draw() {
   fill(315, 360, 360);
   rect(525, 375, 25, 50);
   rect(525, 475, 25, 50);
+  textSize(80);
+  stroke(111, 17, 111);
+  text("Monopo\nLoons\nChess", 300, 220);
 }
