@@ -11,4 +11,5 @@ Draw.io Management and Coding Oversight
 Logic and Environment Development
 ### Dallin Sou(ku)p
 Graphics and Visuals Development
+
 ![TheKnightsRadiant](https://github.com/TylerLeCmd/TheGangProject/blob/main/images/tyty+soup.jpg?raw=true)
