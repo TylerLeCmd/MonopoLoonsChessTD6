@@ -1,6 +1,6 @@
 # Computer Programming Group Project
 
-This be our project
+A Bloons-TD-Style Tower Defense Game Where Chess Pieces from Chess.com Fight Monkeys from Bloons Tower Defense 6 on a Monopoly-Inspired Board
 
 Run by Tyler Le, Juntian Deng, Eddie Li, and Dallin Sou(ku)p
 ### Tyler Le
