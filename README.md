@@ -12,6 +12,8 @@ Logic and Environment Development
 ### Dallin Sou(ku)p
 Graphics and Visuals Development
 
+[Gantt Chart](https://docs.google.com/spreadsheets/d/1DKvuApA6-Rqm8wSFfxvqlRdtiXO6d4xpspF013CkKUs/edit?usp=sharing)
+
 [Source Code](https://m.youtube.com/watch?v=dQw4w9WgXcQ)
 
 ![image1](https://github.com/TylerLeCmd/MonopoLoonsChessTD6/blob/58af40fbd00edfc80458f125f5f19933381a5bb4/images/Screenshot%202023-10-23%20at%208.08.38%20AM.png)
