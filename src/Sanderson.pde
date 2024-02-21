@@ -8,6 +8,13 @@ void setup() {
 
 void draw() {
   bgDraw();
+  PImage whiterook = loadImage("whiterook.png");
+  image(whiterook, 750, 200, 50, 50);
+  boolean pressed = mousePressed;
+  if(mousePressed && dist(mouseX, mouseY, 750, 200)<35) {
+    PImage wrtemp = loadImage("whiterook.png");
+    image(wrtemp, mouseX, mouseY, 50, 50);
+  }
   Rook rookW1 = new Rook();
   rookW1.setX(1);
   rookW1.setY(1);
