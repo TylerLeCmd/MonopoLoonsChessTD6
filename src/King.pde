@@ -11,6 +11,12 @@ public class King implements Pieces {
   public void setY(int y) {
     this.y = y;
   }
+  public int getX() {
+    return this.x;
+  }
+  public int getY() {
+    return this.y;
+  }
   public void setWhite(boolean white) {
     this.white = white;
   }
