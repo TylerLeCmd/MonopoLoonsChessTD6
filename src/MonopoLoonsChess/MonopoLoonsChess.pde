@@ -1,8 +1,21 @@
-boolean move;
-int lastX = 14;
-int lastY = 7;
+boolean lastPressed;
+PImage whiterook;
+PFont font;
+int clickX;
+int clickY;
+boolean pressed;
+ArrayList<King> kings;
+ArrayList<Rook> rooks = new ArrayList<Rook>();
+String piece;
+
 void setup() {
-  PFont font;
+  lastPressed = false;
+  whiterook = loadImage("whiterook.png");
+  clickX = 0;
+  clickY = 0;
+  pressed = false;
+  kings = new ArrayList<King>(0);
+  piece = "";
   size(900, 600);
   font = createFont("Montserrat-Bold.ttf", 128);
   textFont(font);
@@ -11,32 +24,41 @@ void setup() {
 
 void draw() {
   bgDraw();
-  Rook rookW1 = new Rook();
-  rookW1.setX(1);
-  rookW1.setY(1);
-  rookW1.setWhite(true);
+  pressed = mousePressed;
+  image(whiterook, 750, 200, 50, 50);
+  if(pressed&&!lastPressed&&mouseX>725&&mouseX<775&&mouseY>175&&mouseY<225) {
+    //clickX = mouseX;
+    //clickY = mouseY;
+    piece = "rook";
+  }
+  if(mousePressed && piece=="rook"/*&& clickX>725 && clickX<775 && clickY>175 && clickY<225*/) {
+    PImage wrtemp = loadImage("whiterook.png");
+    image(wrtemp, 50+50*floor((mouseX-25)/50), 600-(50+50*floor((600-(mouseY+25))/50)), 50, 50);
+  }
+  if(lastPressed&&!pressed&&mouseX>75&&mouseX<525&&mouseY>75&&mouseY<525) {
+    if(piece == "rook") {
+      rooks.add(new Rook(floor((mouseX-25)/50), floor((600-(mouseY+25))/50), true));
+      piece = "";
+      //rooks[0].setX(floor((mouseX-25)/50));
+    }
+  }
+  for (Rook r : rooks) {
+    r.drawPiece();
+  }
+  Rook rookW1 = new Rook(1, 1, true);
   rookW1.drawPiece();
-  Rook rookW2 = new Rook();
-  rookW2.setX(9);
-  rookW2.setY(1);
-  rookW2.setWhite(true);
+  Rook rookW2 = new Rook(9, 1, true);
   rookW2.drawPiece();
-  Rook rookB1 = new Rook();
-  rookB1.setX(1);
-  rookB1.setY(9);
-  rookB1.setWhite(false);
+  Rook rookB1 = new Rook(1, 9, false);
   rookB1.drawPiece();
-  Rook rookB2 = new Rook();
-  rookB2.setX(9);
-  rookB2.setY(9);
-  rookB2.setWhite(false);
+  Rook rookB2 = new Rook(9, 9, false);
   rookB2.drawPiece();
   King king = new King();
   king.setX(5);
   king.setY(5);
   king.setWhite(true);
   king.drawPiece();
-  King king2 = new King();
+  /*King king2 = new King();
   if (!move) {
     king2.setX(lastX);
     king2.setY(lastY);
@@ -45,16 +67,11 @@ void draw() {
     king2.setY(floor((600-(mouseY+25))/50));
   }
   king2.setWhite(true);
-  king2.drawPiece();
+  king2.drawPiece();*/
   fill(255);
   text(mouseX, 700, 500);
   text(mouseY, 700, 550);
-  text(king2.getX(), 750, 500);
-  text(king2.getY(), 750, 550);
-  text(floor((mouseX-25)/50), 650, 500);
-  text(floor((600-(mouseY+25))/50), 650, 550);
-  text(lastX, 775, 500);
-  text(lastY, 775, 550);
+  lastPressed = mousePressed;
 }
 
 void bgDraw() {
@@ -202,25 +219,8 @@ void bgDraw() {
   fill(30);
   stroke(30);
   /*rect(330, 495, 30, 30);
-   strokeWeight(2);
-   line(345, 475, 345, 495);
-   line(335, 485, 355, 485);
-   strokeWeight(1);*/
-  rect (725, 175, 50, 50);
-}
-
-void mouseClicked() {
-  if (mouseX >= 725 && mouseX <= 775 && mouseY >= 175 &&mouseX >= 225) {
-    move = true;
-  }else{
-    move = false;
-  }
-  if (move) {
-    lastX = floor((mouseX-25)/50);
-    lastY = floor((600-(mouseY+25))/50);
-  }
-  if (!move){
-    lastX = floor((mouseX-25)/50);
-    lastY = floor((600-(mouseY+25))/50);
-  }
+  strokeWeight(2);
+  line(345, 475, 345, 495);
+  line(335, 485, 355, 485);
+  strokeWeight(1);*/
 }
