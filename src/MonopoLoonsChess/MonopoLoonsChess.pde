@@ -1,16 +1,19 @@
 boolean lastPressed;
 PImage whiterook;
+PImage whitequeen;
 PFont font;
 int clickX;
 int clickY;
 boolean pressed;
 ArrayList<King> kings;
 ArrayList<Rook> rooks = new ArrayList<Rook>();
+ArrayList<Queen> queens = new ArrayList<Queen>();
 String piece;
 
 void setup() {
   lastPressed = false;
   whiterook = loadImage("whiterook.png");
+  whitequeen = loadImage("whitequeen.png");
   clickX = 0;
   clickY = 0;
   pressed = false;
@@ -26,24 +29,38 @@ void draw() {
   bgDraw();
   pressed = mousePressed;
   image(whiterook, 750, 200, 50, 50);
-  if(pressed&&!lastPressed&&mouseX>725&&mouseX<775&&mouseY>175&&mouseY<225) {
-    //clickX = mouseX;
-    //clickY = mouseY;
-    piece = "rook";
-  }
-  if(mousePressed && piece=="rook"/*&& clickX>725 && clickX<775 && clickY>175 && clickY<225*/) {
-    PImage wrtemp = loadImage("whiterook.png");
-    image(wrtemp, 50+50*floor((mouseX-25)/50), 600-(50+50*floor((600-(mouseY+25))/50)), 50, 50);
-  }
-  if(lastPressed&&!pressed&&mouseX>75&&mouseX<525&&mouseY>75&&mouseY<525) {
-    if(piece == "rook") {
-      rooks.add(new Rook(floor((mouseX-25)/50), floor((600-(mouseY+25))/50), true));
-      piece = "";
-      //rooks[0].setX(floor((mouseX-25)/50));
+  image(whitequeen, 675, 200, 50, 50);
+  if(pressed&&!lastPressed) {
+    if(mouseX>725&&mouseX<775&&mouseY>175&&mouseY<225) {
+      piece = "rook";
+    } else if(mouseX>650&&mouseX<700&&mouseY>175&&mouseY<225) {
+      piece = "queen";
     }
+  }
+  if(mousePressed) {
+    if(piece=="rook") {
+      PImage wrtemp = loadImage("whiterook.png");
+      image(wrtemp, 50+50*floor((mouseX-25)/50), 600-(50+50*floor((600-(mouseY+25))/50)), 50, 50);
+    } else if(piece == "queen") {
+      PImage wqtemp = loadImage("whitequeen.png");
+      image(wqtemp, 50+50*floor((mouseX-25)/50), 600-(50+50*floor((600-(mouseY+25))/50)), 50, 50);
+    }
+  }
+  if(lastPressed&&!pressed) {
+    if(mouseX>75&&mouseX<525&&mouseY>75&&mouseY<525) {
+      if(piece == "rook") {
+        rooks.add(new Rook(floor((mouseX-25)/50), floor((600-(mouseY+25))/50), true));
+      } else if(piece == "queen") {
+        queens.add(new Queen(floor((mouseX-25)/50), floor((600-(mouseY+25))/50), true));
+      }
+    }
+    piece = "";
   }
   for (Rook r : rooks) {
     r.drawPiece();
+  }
+  for (Queen q : queens) {
+    q.drawPiece();
   }
   Rook rookW1 = new Rook(1, 1, true);
   rookW1.drawPiece();
