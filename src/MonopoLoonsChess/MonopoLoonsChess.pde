@@ -2,20 +2,17 @@ boolean lastPressed;
 PImage whiterook;
 PImage whitequeen;
 PFont font;
-int clickX;
-int clickY;
 boolean pressed;
 ArrayList<King> kings;
 ArrayList<Rook> rooks = new ArrayList<Rook>();
 ArrayList<Queen> queens = new ArrayList<Queen>();
 String piece;
+float money;
 
 void setup() {
   lastPressed = false;
   whiterook = loadImage("whiterook.png");
   whitequeen = loadImage("whitequeen.png");
-  clickX = 0;
-  clickY = 0;
   pressed = false;
   kings = new ArrayList<King>(0);
   piece = "";
@@ -28,8 +25,16 @@ void setup() {
 void draw() {
   bgDraw();
   pressed = mousePressed;
+  if(money<50) {
+    tint(255, 128);
+  }
   image(whiterook, 750, 200, 50, 50);
+  noTint();
+  if(money<90) {
+    tint(255, 128);
+  }
   image(whitequeen, 675, 200, 50, 50);
+  noTint();
   if(pressed&&!lastPressed) {
     if(mouseX>725&&mouseX<775&&mouseY>175&&mouseY<225) {
       piece = "rook";
@@ -40,18 +45,28 @@ void draw() {
   if(mousePressed) {
     if(piece=="rook") {
       PImage wrtemp = loadImage("whiterook.png");
+      if(money<50) {
+        tint(255, 128);
+      }
       image(wrtemp, 50+50*floor((mouseX-25)/50), 600-(50+50*floor((600-(mouseY+25))/50)), 50, 50);
+      noTint();
     } else if(piece == "queen") {
       PImage wqtemp = loadImage("whitequeen.png");
+      if(money<90) {
+        tint(255, 128);
+      }
       image(wqtemp, 50+50*floor((mouseX-25)/50), 600-(50+50*floor((600-(mouseY+25))/50)), 50, 50);
+      noTint();
     }
   }
   if(lastPressed&&!pressed) {
     if(mouseX>75&&mouseX<525&&mouseY>75&&mouseY<525) {
-      if(piece == "rook") {
+      if(piece == "rook" && money>=50) {
         rooks.add(new Rook(floor((mouseX-25)/50), floor((600-(mouseY+25))/50), true));
-      } else if(piece == "queen") {
+        money -= 50;
+      } else if(piece == "queen" && money>=90) {
         queens.add(new Queen(floor((mouseX-25)/50), floor((600-(mouseY+25))/50), true));
+        money -= 90;
       }
     }
     piece = "";
@@ -89,6 +104,8 @@ void draw() {
   text(mouseX, 700, 500);
   text(mouseY, 700, 550);
   lastPressed = mousePressed;
+  money += 0.1;
+  text(floor(money), 800, 500);
 }
 
 void bgDraw() {
