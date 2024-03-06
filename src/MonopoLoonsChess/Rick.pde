@@ -1,9 +1,9 @@
-class Sanderson extends Enemy {
-  Sanderson(){
+class Rick extends Enemy {
+  Rick(){
     position = 0.0;
-    img = loadImage("Sanderson.png");
+    img = loadImage("Rick.jpeg");
     health = 20;
-    speed = 1;
+    speed = 2;
   }
   
   public void setPosition(int position) {

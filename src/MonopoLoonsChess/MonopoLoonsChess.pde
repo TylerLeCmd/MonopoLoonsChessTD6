@@ -6,6 +6,8 @@ boolean pressed;
 ArrayList<King> kings;
 ArrayList<Rook> rooks = new ArrayList<Rook>();
 ArrayList<Queen> queens = new ArrayList<Queen>();
+ArrayList<Sanderson> sandersons;
+ArrayList<Rick> ricks;
 String piece;
 float money;
 
@@ -15,6 +17,10 @@ void setup() {
   whitequeen = loadImage("whitequeen.png");
   pressed = false;
   kings = new ArrayList<King>(0);
+  sandersons = new ArrayList<Sanderson>();
+  sandersons.add(new Sanderson());
+  ricks = new ArrayList<Rick>();
+  ricks.add(new Rick());
   piece = "";
   size(900, 600);
   font = createFont("Montserrat-Bold.ttf", 128);
@@ -77,6 +83,14 @@ void draw() {
   for (Queen q : queens) {
     q.drawPiece();
   }
+  for (Sanderson s : sandersons) {
+    s.drawEnemy();
+    s.inc();
+  }
+  for (Rick r : ricks) {
+    r.drawEnemy();
+    r.inc();
+  }
   Rook rookW1 = new Rook(1, 1, true);
   rookW1.drawPiece();
   Rook rookW2 = new Rook(9, 1, true);
@@ -103,8 +117,9 @@ void draw() {
   fill(255);
   text(mouseX, 700, 500);
   text(mouseY, 700, 550);
+  text(sandersons.get(0).getPosition(), 700, 450);
   lastPressed = mousePressed;
-  money += 0.1;
+  money += 0.05;
   text(floor(money), 800, 500);
 }
 
@@ -250,6 +265,7 @@ void bgDraw() {
   text("6", 78, 227, 47, 47);
   text("4", 78, 327, 47, 47);
   text("2", 78, 427, 47, 47);
+  
   fill(30);
   stroke(30);
   /*rect(330, 495, 30, 30);
