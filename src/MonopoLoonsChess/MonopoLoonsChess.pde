@@ -79,6 +79,7 @@ void draw() {
   }
   for (Rook r : rooks) {
     r.drawPiece();
+    r.attack();
   }
   for (Queen q : queens) {
     q.drawPiece();
@@ -93,12 +94,16 @@ void draw() {
   }
   Rook rookW1 = new Rook(1, 1, true);
   rookW1.drawPiece();
+  rookW1.attack();
   Rook rookW2 = new Rook(9, 1, true);
   rookW2.drawPiece();
+  rookW2.attack();
   Rook rookB1 = new Rook(1, 9, false);
   rookB1.drawPiece();
+  rookB1.attack();
   Rook rookB2 = new Rook(9, 9, false);
   rookB2.drawPiece();
+  rookB2.attack();
   King king = new King();
   king.setX(5);
   king.setY(5);

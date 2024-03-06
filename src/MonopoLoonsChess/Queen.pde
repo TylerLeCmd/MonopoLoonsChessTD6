@@ -1,6 +1,18 @@
 public class Queen implements Pieces {
   private int x;
   private int y;
+  private boolean white;
+  private PImage wq;
+  private PImage bq;
+  
+  public Queen(int x, int y, boolean white) {
+    this.x = x;
+    this.y = y;
+    this.white = white;
+    wq = loadImage("whitequeen.png");
+    bq = loadImage("blackqueen.png");
+  }
+  
   public void setX(int x) {
     this.x = x;
   }

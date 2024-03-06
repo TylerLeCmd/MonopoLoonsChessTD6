@@ -15,7 +15,7 @@ class Rick extends Enemy {
   }
   
   public void inc() {
-    position += (float) speed/100;
+    position += (float) speed/50;
     position = position%40;
   }
   
