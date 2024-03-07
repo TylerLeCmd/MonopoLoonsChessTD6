@@ -1,6 +1,18 @@
 public class Knight implements Pieces {
   private int x;
   private int y;
+  private boolean white;
+  private PImage wk;
+  private PImage bk;
+  
+  public Knight(int x, int y, boolean white) {
+    this.x = x;
+    this.y = y;
+    this.white = white;
+    wk = loadImage("whiteknight.png");
+    bk = loadImage("blackknight.png");
+  }
+  
   public void setX(int x) {
     this.x = x;
   }
@@ -8,14 +20,48 @@ public class Knight implements Pieces {
     this.y = y;
   }
   
+  public void attack() {
+    for(int i = 0; i<=10; i++) {
+      for(int j = 0; j<=10; j++) {
+        if(checkMove(i, j)) {
+          fill(255, 0, 0, 64);
+          if(i>0&&i<10&&j>0&&j<10) {
+            rect(i*50+25, 600-(j*50+75), 50, 50);
+          } else if(i==0&&j!=10&&j!=0) {
+            rect(0, 600-(j*50+75), 75, 50);
+          } else if(j==10&&i!=10&&i!=0) {
+            rect(i*50+25, 0, 50, 75);
+          } else if(i==10&&j!=10&&j!=0) {
+            rect(525, 600-(j*50+75), 75, 50);
+          } else if(j==0&&i!=10&&i!=0) {
+            rect(i*50+25, 525, 50, 75);
+          } else if(i==0&&j==0) {
+            rect(0, 525, 75, 75);
+          } else if(i==0&&j==10) {
+            rect(0, 0, 75, 75);
+          } else if(i==10&&j==10) {
+            rect(525, 0, 75, 75);
+          } else if(i==10&&j==0) {
+            rect(525, 525, 75, 75);
+          }
+          noFill();
+        }
+      }
+    }
+  }
+  
   @Override
   public void drawPiece() {
-    //TBD
+    if(white) {
+      image(wk, x*50+50, 600-(y*50+50), 50, 50);
+    } else {
+      image(bk, x*50+50, 600-(y*50+50), 50, 50);
+    }
   }
   
   @Override
   public boolean checkMove(int checkX, int checkY) {
-    if (!((checkX==x)&&(checkY==y)) && checkX>0 && checkX<9 && checkY>0 && checkY<9 && ((Math.abs(checkX-x)==1 && Math.abs(checkY-y)==2)||(Math.abs(checkX-x)==2 && Math.abs(checkY-y)==1))) {
+    if (!((checkX==x)&&(checkY==y)) && checkX>=0 && checkX<=10 && checkY>=0 && checkY<=10 && ((Math.abs(checkX-x)==1 && Math.abs(checkY-y)==2)||(Math.abs(checkX-x)==2 && Math.abs(checkY-y)==1))) {
       return true;
     } else {
       return false;

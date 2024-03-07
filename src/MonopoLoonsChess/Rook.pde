@@ -40,6 +40,14 @@ public class Rook implements Pieces{
             rect(525, 600-(j*50+75), 75, 50);
           } else if(j==0&&i!=10&&i!=0) {
             rect(i*50+25, 525, 50, 75);
+          } else if(i==0&&j==0) {
+            rect(0, 525, 75, 75);
+          } else if(i==0&&j==10) {
+            rect(0, 0, 75, 75);
+          } else if(i==10&&j==10) {
+            rect(525, 0, 75, 75);
+          } else if(i==10&&j==0) {
+            rect(525, 525, 75, 75);
           }
           noFill();
         }
