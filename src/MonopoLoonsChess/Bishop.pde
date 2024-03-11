@@ -1,6 +1,8 @@
 public class Bishop implements Pieces {
   private int x;
   private int y;
+  private float damage;
+  private boolean a;
   private boolean white;
   private PImage wb;
   private PImage bb;
@@ -9,6 +11,8 @@ public class Bishop implements Pieces {
     this.x = x;
     this.y = y;
     this.white = white;
+    damage = 10;
+    a = false;
     wb = loadImage("whitebishop.png");
     bb = loadImage("blackbishop.png");
   }
@@ -21,6 +25,7 @@ public class Bishop implements Pieces {
   }
   
   public void attack() {
+    
     for(int i = 0; i<=10; i++) {
       for(int j = 0; j<=10; j++) {
         if(checkMove(i, j)) {
@@ -28,26 +33,63 @@ public class Bishop implements Pieces {
           if(i>0&&i<10&&j>0&&j<10) {
             rect(i*50+25, 600-(j*50+75), 50, 50);
           } else if(i==0&&j!=10&&j!=0) {
-            rect(0, 600-(j*50+75), 75, 50);
+            int yTemp = 600-(j*50+75);
+            rect(0, yTemp, 75, 50);
+            for(int k = 0; k<9; k++) {
+              if(yTemp+25>squares.get(k+11).getStartY() && yTemp+25<squares.get(k+11).getEndY()) {
+                squares.get(k+11).addDamage(damage);
+              }
+            }
           } else if(j==10&&i!=10&&i!=0) {
-            rect(i*50+25, 0, 50, 75);
+            int xTemp = i*50+25;
+            rect(xTemp, 0, 50, 75);
+            for(int k = 0; k<9; k++) {
+              if(xTemp+25>squares.get(k+21).getStartX() && xTemp+25<squares.get(k+21).getEndX()) {
+                squares.get(k+21).addDamage(damage);
+              }
+            }
           } else if(i==10&&j!=10&&j!=0) {
-            rect(525, 600-(j*50+75), 75, 50);
+            int yTemp = 600-(j*50+75);
+            rect(525, yTemp, 75, 50);
+            for(int k = 0; k<9; k++) {
+              if(yTemp+25>squares.get(k+31).getStartY() && yTemp+25<squares.get(k+31).getEndY()) {
+                squares.get(k+31).addDamage(damage);
+              }
+            }
           } else if(j==0&&i!=10&&i!=0) {
-            rect(i*50+25, 525, 50, 75);
+            int xTemp = i*50+25;
+            rect(xTemp, 525, 50, 75);
+            for(int k = 0; k<9; k++) {
+              if(xTemp+25>squares.get(k+1).getStartX() && xTemp+25<squares.get(k+1).getEndX()) {
+                squares.get(k+1).addDamage(damage);
+              }
+            }
           } else if(i==0&&j==0) {
             rect(0, 525, 75, 75);
+            if(!a) {
+              squares.get(10).addDamage(damage);
+            }
           } else if(i==0&&j==10) {
             rect(0, 0, 75, 75);
+            if(!a) {
+              squares.get(20).addDamage(damage);
+            }
           } else if(i==10&&j==10) {
             rect(525, 0, 75, 75);
+            if(!a) {
+              squares.get(30).addDamage(damage);
+            }
           } else if(i==10&&j==0) {
             rect(525, 525, 75, 75);
+            if(!a) {
+              squares.get(0).addDamage(damage);
+            }
           }
           noFill();
         }
       }
     }
+    a = true;
   }
   
   @Override

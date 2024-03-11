@@ -15,6 +15,7 @@ ArrayList<Rick> ricks;
 ArrayList<Pawn> pawns;
 ArrayList<Bishop> bishops;
 ArrayList<Knight> knights;
+ArrayList<Square> squares;
 String piece;
 float money;
 
@@ -37,6 +38,23 @@ void setup() {
   pawns = new ArrayList<Pawn>();
   bishops = new ArrayList<Bishop>();
   knights = new ArrayList<Knight>();
+  squares = new ArrayList<Square>();
+  squares.add(new Square(0, 525, 525, 600, 600));
+  for(int i=0; i<9; i++) {
+    squares.add(new Square(i+1, 475-50*i, 525-50*i, 525, 600));
+  }
+  squares.add(new Square(10, 0, 75, 525, 600));
+  for(int i=0; i<9; i++) {
+    squares.add(new Square(i+11, 0, 75, 475-50*i, 525-50*i));
+  }
+  squares.add(new Square(20, 0, 0, 75, 75));
+  for(int i=0; i<9; i++) {
+    squares.add(new Square(i+21, 75+50*i, 125+50*i, 0, 75));
+  }
+  squares.add(new Square(30, 525, 600, 0, 75));
+  for(int i=0; i<9; i++) {
+    squares.add(new Square(i+31, 525, 600, 75+50*i, 125+50*i));
+  }
   piece = "";
   money = 100.0;
   size(900, 600);
@@ -167,11 +185,25 @@ void draw() {
     q.attack();
   }
   for (Sanderson s : sandersons) {
-    s.drawEnemy();
+    for(int i=0; i<40; i++) {
+      float n = (float) squares.get(i).getN();
+      if(s.position>39.5) {
+        float d = squares.get(0).getDamage()/10;
+        s.takeDamage(d);
+      } else if(s.position>(n-0.5) && s.position<(n+0.5)) {
+        float d = squares.get(i).getDamage()/10;
+        s.takeDamage(d);
+      }
+    }
+    if(s.health>0) {
+      s.drawEnemy();
+    }
     s.inc();
   }
   for (Rick r : ricks) {
-    r.drawEnemy();
+    if(r.health>0) {
+      r.drawEnemy();
+    }
     r.inc();
   }
   for(Pawn p : pawns) {
