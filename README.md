@@ -16,6 +16,7 @@ Logic and Environment Development
 
 [Source Code](https://m.youtube.com/watch?v=dQw4w9WgXcQ)
 
+![Layout](https://github.com/TylerLeCmd/MonopoLoonsChessTD6/blob/main/images/Layout.png?raw=true)
 ![image1](https://github.com/TylerLeCmd/MonopoLoonsChessTD6/blob/58af40fbd00edfc80458f125f5f19933381a5bb4/images/Screenshot%202023-10-23%20at%208.08.38%20AM.png)
 ![image](https://github.com/TylerLeCmd/MonopoLoonsChessTD6/blob/main/images/class%20functions.png)
 ![TheKnightsRadiant](https://github.com/TylerLeCmd/TheGangProject/blob/main/images/tyty+soup.jpg?raw=true)
