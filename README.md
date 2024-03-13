@@ -8,9 +8,9 @@ Repository Cleaning and Logic Coding
 ### Juntian Deng
 Draw.io Management and Coding Oversight
 ### Eddie Li
-Logic and Environment Development
-### Dallin Sou(ku)p
 Graphics and Visuals Development
+### Dallin Sou(ku)p
+Logic and Environment Development
 
 [Gantt Chart](https://docs.google.com/spreadsheets/d/1DKvuApA6-Rqm8wSFfxvqlRdtiXO6d4xpspF013CkKUs/edit?usp=sharing)
 
