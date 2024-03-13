@@ -36,7 +36,7 @@ public class Pawn implements Pieces {
             int yTemp = 600-(j*50+75);
             rect(0, yTemp, 75, 50);
             for(int k = 0; k<9; k++) {
-              if(yTemp+25>squares.get(k+11).getStartY() && yTemp+25<squares.get(k+11).getEndY()) {
+              if(yTemp+25>squares.get(k+11).getStartY() && yTemp+25<squares.get(k+11).getEndY() && !a) {
                 squares.get(k+11).addDamage(damage);
               }
             }
@@ -44,7 +44,7 @@ public class Pawn implements Pieces {
             int xTemp = i*50+25;
             rect(xTemp, 0, 50, 75);
             for(int k = 0; k<9; k++) {
-              if(xTemp+25>squares.get(k+21).getStartX() && xTemp+25<squares.get(k+21).getEndX()) {
+              if(xTemp+25>squares.get(k+21).getStartX() && xTemp+25<squares.get(k+21).getEndX() && !a) {
                 squares.get(k+21).addDamage(damage);
               }
             }
@@ -52,7 +52,7 @@ public class Pawn implements Pieces {
             int yTemp = 600-(j*50+75);
             rect(525, yTemp, 75, 50);
             for(int k = 0; k<9; k++) {
-              if(yTemp+25>squares.get(k+31).getStartY() && yTemp+25<squares.get(k+31).getEndY()) {
+              if(yTemp+25>squares.get(k+31).getStartY() && yTemp+25<squares.get(k+31).getEndY() && !a) {
                 squares.get(k+31).addDamage(damage);
               }
             }
@@ -60,7 +60,7 @@ public class Pawn implements Pieces {
             int xTemp = i*50+25;
             rect(xTemp, 525, 50, 75);
             for(int k = 0; k<9; k++) {
-              if(xTemp+25>squares.get(k+1).getStartX() && xTemp+25<squares.get(k+1).getEndX()) {
+              if(xTemp+25>squares.get(k+1).getStartX() && xTemp+25<squares.get(k+1).getEndX() && !a) {
                 squares.get(k+1).addDamage(damage);
               }
             }

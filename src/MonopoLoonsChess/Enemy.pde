@@ -1,7 +1,12 @@
 class Enemy {
-  int health, speed;
-  float position;
+  int speed;
+  float position, health;
   PImage img;
+  
+  public void takeDamage(float damage) {
+    health = health-damage;
+  }
+  
   public float xc(float pos) {
     if(pos<=10) {
       if(pos<0.5) {

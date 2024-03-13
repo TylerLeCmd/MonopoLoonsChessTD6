@@ -188,7 +188,7 @@ void draw() {
     for(int i=0; i<40; i++) {
       float n = (float) squares.get(i).getN();
       if(s.position>39.5) {
-        float d = squares.get(0).getDamage()/10;
+        float d = squares.get(0).getDamage()/100;
         s.takeDamage(d);
       } else if(s.position>(n-0.5) && s.position<(n+0.5)) {
         float d = squares.get(i).getDamage()/10;
@@ -201,6 +201,18 @@ void draw() {
     s.inc();
   }
   for (Rick r : ricks) {
+    text(r.health, 750, 500);
+    //text(squares.get(35).getDamage(), 750, 500);
+    for(int i=0; i<40; i++) {
+      float n = (float) squares.get(i).getN();
+      if(r.position>39.5) {
+        float d = squares.get(0).getDamage()/1000;
+        r.takeDamage(d);
+      } else if(r.position>(n-0.5) && r.position<(n+0.5)) {
+        float d = squares.get(i).getDamage()/100;
+        r.takeDamage(d);
+      }
+    }
     if(r.health>0) {
       r.drawEnemy();
     }
@@ -248,11 +260,11 @@ void draw() {
   king2.setWhite(true);
   king2.drawPiece();*/
   fill(255);
-  text(mouseX, 700, 500);
-  text(mouseY, 700, 550);
+  //text(mouseX, 700, 500);
+  //text(mouseY, 700, 550);
   lastPressed = mousePressed;
   money += 0.05;
-  text(floor(money), 800, 500);
+  text("Money: " + floor(money), 800, 500);
 }
 
 void bgDraw() {
